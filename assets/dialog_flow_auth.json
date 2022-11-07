@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "flutter-donation-chatbot-hjal",
+  "private_key_id": "c89dcd0ac1613a38a62e53fb063fe101e53f7fdb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDAlS35WNeF7XpM\n+AxiZJybE5+Y7dT5hdhW0DjDOrtW9rigKVhAWZgN10ULgii7rCCwOTtF5pyArWF8\nDw3Ctdp2iQiS9Uv9x8Kmn66g3Prow1H7IA4Bk08YsN1qtpE6zSAABLh+O+GeidEa\npLgEM7F6OLzp0QPjD0YnvBL9YjGV02LvByo5PA+fSsQ3JKcAnjsQgCUpqubPG5mI\niBJxK5kMsWqumS7MigfnIX5w69fT9N/EJ2qAZ78o2CVyNHFlzDOj89Sy01vdWiiY\nSEfhGMW3+yrbYQ7pDCqLBJk0+rsX46xFnYOBKnzQCOH5vIONZ9KV2VavdZEWpRAS\ngdKP/TG9AgMBAAECggEAAhywuiMYDAM4e+cdhae6UvYSYkQ7eXgXEQ6sDLIUc2X1\nzOXfLqd85Cv3+SIWjcZbvmsGRCQ9E6kzID/vA/NoH7QtiKURjgk2kIrASMnbo5le\nyQ0HMku6CpiH+R9i9NzijLWAi3vfI9S5mxvy27Lwb5l3Mu5Ep2UXvSBSKf69cfnw\nYQbJ/ndQEJhwL6nxic7sBKjP+LLyZCIA1yAL3h7VxDjJDKuRai4qUWEE/3bH3534\nwV/oDwnNAupxXCJVqgGkByzkZWWV1TroucSmhvjNVmwNX4y7VgH8UidbF3AmT1WM\nt1BengdodTvBYuubkxlsQvQh5F4s8S/QrZxrRBdscQKBgQDxJuJk+LRSy1qj2J1o\nmwMrhZo1TgS9yWC/7+NfOUt0Ob2Be1Bm9eJx81YKO1Rws1Czs4iH9JEhos2DZzL6\nsKUqAb4DFN1qVLcftJgGWM0vEq7W9+a74eaqjSD26Yq2WsISFUDoV0AG2SpBaIO8\nSDZNctE33hDweN34aFkm5eZ9DQKBgQDMcLtsvbSD9jf5J107dTPVAxQDzLgGn4uq\nn+Vv7leuMqfzAs2Dobv6MxLSVYw9wjinLYCLezy7AkYEDW39k3l6yMti7A74z9/d\n/xGnQ/h9XdXiO5ftbttMeZjABQHfWKa0U8VBtg+vhmu37FC7nvM9O9LWmoSpZEDG\nII1VYKY7cQKBgDvFm4/TZT6wUMMTydBHu71p3BMiR2KTK3vnhb/wf5dLSIFzgzZB\n8+Kyobzff8p/Z51i/pBUOjTQGYhcZ/JjHk0PKX2yCj90x/7/0D6ifBkS1GtL/tDK\n6VWUrXsF3+/bBwdcZT4xghkwcpzLvvtIGs2Pi/QBAsnX64zKsG5HxZ1xAoGAPZpq\nn6W6U1lKHIXEDjqO180Jput1OGmzCEMOO+AyA4e4G/3oN5Xwsr/ZGBA3JhT0RUvs\nxBrqfd99gZMaZaKepGUFBFXlXQwmhRprE1/j7MLtxDH44c7Zvf2WDaZ0nfx0nznu\n4pIdv+JdaxqGaULIQNdZ/NiqyPAwpIMCk4uAC8ECgYBuCWTSy3YSqMiSrBxgldKg\niwsQQgEbfzi/Fr5h30u4BnMbC12111o5Coh3VGOSZQS9VNF9wsKahjD+lmRx248Y\nMn1Vmzt5RnaRmdIgdlWG+1UeUG95P6qplGnPiTvW4aOkMlKtKaxKK4PrzOttxps4\nP5LSTgfUFiz7t5877IM+Kw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "flutterbot@flutter-donation-chatbot-hjal.iam.gserviceaccount.com",
+  "client_id": "118167961170787957078",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/flutterbot%40flutter-donation-chatbot-hjal.iam.gserviceaccount.com"
+}
