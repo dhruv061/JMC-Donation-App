@@ -18,6 +18,7 @@ import 'package:firebase_database/firebase_database.dart';
 import '../Utils/NextScreen.dart';
 import '../Utils/SnackBar.dart';
 import '../module/ProfilePage_AfterLogin.dart';
+import '../module/SessionController.dart';
 import '../provider/InternetProvider.dart';
 import '../provider/SignInProvider.dart';
 import 'FirstPage.dart';
@@ -125,9 +126,12 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
+  //for storing Data in firebase
+  FirebaseAuth auth = FirebaseAuth.instance;
+  DatabaseReference ref = FirebaseDatabase.instance.ref().child('users');
+
   //signup method
   Future signUp() async {
-    final sp = context.read<SignInProvider>();
     final ip = context.read<InternetProvider>();
     await ip.checkInternetConnection();
 
@@ -138,55 +142,49 @@ class _SignupPageState extends State<SignupPage> {
       //for authenticate User's
       if (password == confirmPassword) {
         try {
-          await FirebaseAuth.instance
-              .createUserWithEmailAndPassword(email: email, password: password);
+          await auth
+              .createUserWithEmailAndPassword(email: email, password: password)
+              .then((value) {
+            //store user id in session controller
+            SessionController().userId = value.user!.uid.toString();
 
-          //show succuful signup meesage
-          openSnackbar(context, "Registered complete Successfull",
-              const Color.fromARGB(255, 70, 213, 92));
+            //store data in real time db
+            ref
+                .child(value.user!.uid.toString())
+                .set({
+                  'uid': value.user!.uid.toString(),
+                  'image_url': '',
+                  'Name': nameController.text,
+                  'Email': emailController.text,
+                  'AdhharCard No': adhharCardController.text,
+                  'Phone No ': phoneNOController.text,
+                  'Password': passwordController.text,
+                })
+                .then((value) {})
+                .onError((erroe, snapTrace) {
+                  openSnackbar(context, erroe.toString(), Colors.red);
+                });
 
-          // // save the values
-          // sp.phoneNumberUser(name, email, phoneno, password);
+            //for storing data all information are true and password and Confirm Password match
+            //call function which make below
+            addUserDetails(
+              value.user!.uid.toString(),
+              nameController.text.trim(),
+              emailController.text.trim(),
+              adhharCardController.text.trim(),
+              phoneNOController.text.trim(),
+              passwordController.text.trim(),
+            );
 
-          // // checking whether user exists,
-          // sp.checkUserExists().then(
-          //   (value) async {
-          //     if (value == true) {
-          //       // user exists
-          //       await sp.getUserDataFromFirestore(sp.uid).then((value) => sp
-          //           .saveDataToSharedPreferences()
-          //           .then((value) => sp.setSignIn().then((value) {
-          //                 nextScreenReplace(context, ProfilePage_Login());
-          //               })));
-          //     } else {
-          //       // user does not exist
-          //       await sp.saveDataToFirestore().then(
-          //             (value) => sp.saveDataToSharedPreferences().then(
-          //                   (value) => sp.setSignIn().then(
-          //                     (value) {
-          //                       nextScreenReplace(
-          //                           context, const ProfilePage_Login());
-          //                     },
-          //                   ),
-          //                 ),
-          //           );
-          //     }
-          //   },
-          // );
+            //show succuful signup meesage
+            openSnackbar(context, "Registered complete Successfull",
+                const Color.fromARGB(255, 70, 213, 92));
 
-          //for storing data all information are true and password and Confirm Password match
-          //call function which make below
-          addUserDetails(
-            nameController.text.trim(),
-            emailController.text.trim(),
-            adhharCardController.text.trim(),
-            phoneNOController.text.trim(),
-            passwordController.text.trim(),
-          );
-
-          //after signup redirct user to signin page
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => AuthPage()));
+            //after signup redirct user to signin page
+            nextScreen(context, AuthPage());
+          }).onError((error, stackTrace) {
+            openSnackbar(context, error.toString(), Colors.red);
+          });
         } on FirebaseAuthException catch (e) {
           //for weak password
           if (e.code == 'weak-password') {
@@ -242,9 +240,10 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   //for storing user data into cloud Firestore
-  Future addUserDetails(
-      String name, var email, var addharCard, var phoneNo, var password) async {
+  Future addUserDetails(String id, String name, var email, var addharCard,
+      var phoneNo, var password) async {
     await FirebaseFirestore.instance.collection('users').add({
+      'uid': id,
       'name': name,
       'E-mail': email,
       'AdhharCard No': addharCard,
@@ -266,7 +265,7 @@ class _SignupPageState extends State<SignupPage> {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Column(
-              children: <Widget>[
+              children: [
                 //here we wrap eith Form beacuse we use validation of email, password
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -321,7 +320,6 @@ class _SignupPageState extends State<SignupPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: Column(
                       children: [
-                        
                         //for Name Text Filed
                         TextFormField(
                           controller: nameController,
@@ -748,7 +746,7 @@ class _SignupPageState extends State<SignupPage> {
                   width: 170,
                   child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      primary: HexColor("#22E183"),
+                      backgroundColor: HexColor("#22E183"),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
@@ -818,18 +816,6 @@ class _SignupPageState extends State<SignupPage> {
                         );
 
                         signUp();
-
-                        //for storing user data in Real time Databse
-                        Map<String, String> Users = {
-                          'Name': nameController.text,
-                          'E-mail': emailController.text,
-                          'AadhharCard No':  adhharCardController.text,
-                          'Phone No': phoneNOController.text,
-                          'Password': passwordController.text,
-                          
-                        };
-
-                        dbRef.push().set(Users);
                       }
 
                       //after run above line of code this Stop the Loading Indicator

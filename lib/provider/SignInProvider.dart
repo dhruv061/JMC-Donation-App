@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -90,6 +91,7 @@ class SignInProvider extends ChangeNotifier {
         _password = "null";
         _provider = "GOOGLE";
         _uid = userDetails.uid;
+
         notifyListeners();
       } on FirebaseAuthException catch (e) {
         switch (e.code) {

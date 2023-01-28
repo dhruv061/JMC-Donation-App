@@ -8,6 +8,7 @@ import 'package:jmc/module/ForgetPassword.dart';
 import 'package:provider/provider.dart';
 
 import '../Utils/SnackBar.dart';
+import '../module/SessionController.dart';
 import '../provider/InternetProvider.dart';
 
 class SignInPage extends StatefulWidget {
@@ -44,6 +45,8 @@ class _SignInPageState extends State<SignInPage> {
     super.dispose();
   }
 
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   //for login
   Future userLogin() async {
     //check internet is on or not
@@ -55,18 +58,38 @@ class _SignInPageState extends State<SignInPage> {
       openSnackbar(context, "Check your internet connection", Colors.red);
     } else {
       try {
-        await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: email, password: password);
+        // await FirebaseAuth.instance
+        //     .signInWithEmailAndPassword(email: email, password: password);
 
-        //show succuful log-in meesage
-        openSnackbar(
-            context, "Log-in Successfull", Color.fromARGB(255, 70, 213, 92));
+        // //show succuful log-in meesage
+        // openSnackbar(
+        //     context, "Log-in Successfull", Color.fromARGB(255, 70, 213, 92));
 
-        //after login go to profile Page
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => FirstPage(TempCheckUserLogin: 'false')));
+        // //after login go to profile Page
+        // Navigator.pushReplacement(
+        //     context,
+        //     MaterialPageRoute(
+        //         builder: (context) => FirstPage(TempCheckUserLogin: 'false')));
+
+        await auth
+            .signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        )
+            .then((value) {
+          SessionController().userId = value.user!.uid.toString();
+
+          //show succuful log-in meesage
+          openSnackbar(
+              context, "Log-in Successfull", Color.fromARGB(255, 70, 213, 92));
+
+          //after login go to profile Page
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      FirstPage(TempCheckUserLogin: 'false')));
+        });
       } on FirebaseAuthException catch (e) {
         //for no user Found
         if (e.code == 'user-not-found') {
@@ -115,7 +138,7 @@ class _SignInPageState extends State<SignInPage> {
             // height: MediaQuery.of(context).size.height,
             // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Column(
-              children: <Widget>[
+              children: [
                 Column(
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -274,7 +297,7 @@ class _SignInPageState extends State<SignInPage> {
                           width: 170,
                           child: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                              primary: HexColor("#22E183"),
+                              backgroundColor: HexColor("#22E183"),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -320,38 +343,42 @@ class _SignInPageState extends State<SignInPage> {
 
                             //here we call method name signup for storing data in firebase
                             onPressed: () async {
-                              //for validation
-                              if (_key.currentState!.validate()) {
-                                isLodaing = true;
-                                setState(() {
-                                  //when user enter email & password then store those email and passwors in variable which intialize in top
-                                  email = emailController.text;
-                                  password = passwordController.text;
-                                });
+                              try {
+                                //for validation
+                                if (_key.currentState!.validate()) {
+                                  isLodaing = true;
+                                  setState(() {
+                                    //when user enter email & password then store those email and passwors in variable which intialize in top
+                                    email = emailController.text;
+                                    password = passwordController.text;
+                                  });
 
-                                //for Showing Loaing Indicator
+                                  //for Showing Loaing Indicator
+                                  Future.delayed(
+                                    Duration(seconds: 3),
+                                    () {
+                                      setState(() {
+                                        isLodaing = true;
+                                      });
+                                    },
+                                  );
+
+                                  //for user login
+                                  userLogin();
+                                }
+
+                                //after run above line of code this Stop the Loading Indicator
                                 Future.delayed(
                                   Duration(seconds: 3),
                                   () {
                                     setState(() {
-                                      isLodaing = true;
+                                      isLodaing = false;
                                     });
                                   },
                                 );
-
-                                //for user login
-                                userLogin();
+                              } catch (e) {
+                                openSnackbar(context, e.toString(), Colors.red);
                               }
-
-                              //after run above line of code this Stop the Loading Indicator
-                              Future.delayed(
-                                Duration(seconds: 3),
-                                () {
-                                  setState(() {
-                                    isLodaing = false;
-                                  });
-                                },
-                              );
                             },
                           ),
                         ),

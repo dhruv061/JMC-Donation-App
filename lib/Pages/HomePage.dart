@@ -1,22 +1,33 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:jmc/Pages/NotificationPage.dart';
-import 'package:jmc/Pages/NotificationPage.dart';
-import 'package:jmc/Utils/NextScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'package:jmc/Pages/NotificationPage.dart';
+import 'package:jmc/Pages/NotificationPage.dart';
+import 'package:jmc/Utils/NextScreen.dart';
+
+import '../module/SessionController.dart';
 import '../provider/SignInProvider.dart';
 import 'DonationPage.dart';
 import 'JmcAboutUs.dart';
 
 class HomePage extends StatefulWidget {
+  //for konw user login with google or facebook or not
+  final String CheckUserLogin;
+  const HomePage({
+    Key? key,
+    required this.CheckUserLogin,
+  }) : super(key: key);
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -29,6 +40,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // for show user data on screen (User Name)
     final sp = context.watch<SignInProvider>();
+
+    //for showing user data
+    //this data comes from Real time database
+    final ref = FirebaseDatabase.instance.ref('users');
 
     return Scaffold(
       backgroundColor: HexColor("#FFFFFF"),
@@ -91,26 +106,11 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             //for show user name
-            if (FirebaseAuth.instance.currentUser != null) ...[
+            if (FirebaseAuth.instance.currentUser == null) ...[
               Container(
                 margin: const EdgeInsets.only(top: 17, left: 12),
                 padding: const EdgeInsets.only(left: 6, top: 15),
                 height: 60,
-                width: 340,
-                // color: Colors.pink,
-                child: Text(
-                  "Hello, ${sp.name} ",
-                  style: const TextStyle(
-                      fontFamily: "Gotham",
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ] else ...[
-              Container(
-                margin: const EdgeInsets.only(top: 17, left: 12),
-                padding: const EdgeInsets.only(left: 6, top: 15),
-                height: 45,
                 width: 340,
                 // color: Colors.pink,
                 child: const Text(
@@ -121,6 +121,49 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
+            ] else ...[
+              if (widget.CheckUserLogin == 'true') ...[
+                Container(
+                  margin: const EdgeInsets.only(top: 17, left: 12),
+                  padding: const EdgeInsets.only(left: 6, top: 15),
+                  height: 60,
+                  width: 340,
+                  // color: Colors.pink,
+                  child: Text(
+                    "Hello, ${sp.name} ",
+                    style: const TextStyle(
+                        fontFamily: "Gotham",
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ] else ...[
+                StreamBuilder(
+                  //this data comes from Real time database
+                  stream:
+                      ref.child(SessionController().userId.toString()).onValue,
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
+                      return Container(
+                        margin: const EdgeInsets.only(top: 17, left: 12),
+                        padding: const EdgeInsets.only(left: 6, top: 15),
+                        height: 45,
+                        width: 340,
+                        // color: Colors.pink,
+                        child: Text(
+                          "Hello, " + map['Name'],
+                          style: const TextStyle(
+                              fontFamily: "Gotham",
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      );
+                    }
+                    return Container();
+                  },
+                ),
+              ]
             ],
 
             //for show sub title name

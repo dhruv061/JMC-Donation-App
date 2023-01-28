@@ -8,9 +8,11 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/ChatBod.dart';
 
 import 'package:jmc/Pages/DonationPage.dart';
+import 'package:jmc/Utils/SnackBar.dart';
 import 'package:jmc/module/ProfilePage_AfterLogin.dart';
 import 'package:jmc/module/defalutProfilePage.dart';
 
+import '../module/SessionController.dart';
 import '../provider/SignInProvider.dart';
 import 'HomePage.dart';
 
@@ -32,30 +34,26 @@ class _FirstPageState extends State<FirstPage> {
   int indexValue = 0;
   late var Screens = [];
 
-  @override 
+  @override
   void initState() {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final user = auth.currentUser;
+
     //for change Screen
     Screens = [
-      HomePage(),
+      HomePage(CheckUserLogin: widget.TempCheckUserLogin),
       const DonationPage(),
       const Chatbod(),
 
-      //show differtnt profile page for signin user and default users
+      //for show diffrent screen
       if (FirebaseAuth.instance.currentUser != null) ...[
-        ProfilePage_Login(CheckUserLogin: widget.TempCheckUserLogin),
-      ] else ...[
+        ProfilePage_AfterLogin(CheckUserLogin: widget.TempCheckUserLogin),
+        SessionController().userId = user!.uid.toString(),
+      ] else
         DefaultProfilePaege(),
-      ]
     ];
 
     super.initState();
-  }
-
-  void _selectPage(int index) {
-    setState(() {
-      //this is for when user touch nev bar then redirect thise corssponding pages
-      indexValue = index;
-    });
   }
 
   @override
@@ -98,7 +96,7 @@ class _FirstPageState extends State<FirstPage> {
                 //for changing Screen
                 onTabChange: (index) {
                   setState(() {
-                    this.indexValue = index;
+                    indexValue = index;
                     // CheckInternert(index);
                   });
                 },
