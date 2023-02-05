@@ -7,14 +7,13 @@ import 'package:hexcolor/hexcolor.dart';
 
 import 'package:jmc/BackEnd/Auth.dart';
 import 'package:jmc/Pages/FirstPage.dart';
-import 'package:jmc/ProfilePageSection/MyProfile.dart';
-import 'package:jmc/ProfilePageSection/MyRewarda.dart';
-import 'package:jmc/ProfilePageSection/SettingPage.dart';
+import 'package:jmc/module/MyRewarda.dart';
 import 'package:jmc/Utils/NextScreen.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../Classes/UserTotalPayment.dart';
 import '../Utils/SnackBar.dart';
-import 'SessionController.dart';
+import '../Classes/SessionController.dart';
 
 class Tab1_HomeTab extends StatefulWidget {
   @override
@@ -38,18 +37,6 @@ class _Tab1_HomeTabState extends State<Tab1_HomeTab> {
           ),
           child: Column(
             children: [
-              //Use Resuable-Container
-
-              //myprofile
-              ResuableContainer(
-                icone: Icons.person,
-                title: 'My Profile',
-                function: () {
-                  nextScreen(context, MyProfile());
-                },
-                padding: 115,
-              ),
-
               //my rewads
               ResuableContainer(
                 icone: Icons.card_giftcard_outlined,
@@ -63,11 +50,9 @@ class _Tab1_HomeTabState extends State<Tab1_HomeTab> {
               //settings
               ResuableContainer(
                   icone: Icons.settings,
-                  title: 'Setting',
-                  function: () {
-                    nextScreen(context, SettingPage());
-                  },
-                  padding: 141),
+                  title: 'language Setting',
+                  function: () {},
+                  padding: 43),
 
               //share App
               ResuableContainer(
@@ -131,6 +116,8 @@ class _Tab1_HomeTabState extends State<Tab1_HomeTab> {
                     }
                   },
                   padding: 132),
+
+              
             ],
           ),
         ),

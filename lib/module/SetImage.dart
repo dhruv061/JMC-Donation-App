@@ -6,10 +6,11 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:jmc/Classes/ImageUploadCheck.dart';
 import 'package:jmc/module/ProfilePage_AfterLogin.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import '../Utils/SnackBar.dart';
-import 'SessionController.dart';
+import '../Classes/SessionController.dart';
 
 class SetImage extends StatefulWidget {
   const SetImage({super.key});
@@ -261,6 +262,9 @@ class _SetImageState extends State<SetImage> {
                             .update({
                           'image_url': newImageUrl.toString(),
                         });
+
+                        //set true for imageUploaded
+                        ImageUploadCheck().isImageUploaded = true;
 
                         Navigator.of(context).pop();
 

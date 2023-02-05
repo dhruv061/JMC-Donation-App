@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
 import '../module/ChatBodService.dart';
 
@@ -98,46 +99,66 @@ class _ChatbodState extends State<Chatbod> {
         color: Colors.white,
         child: Column(
           children: [
-            Expanded(child: ChatBodService(messages: messages)),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: HexColor('#F5F6EA'),
-                        hintText: "how may I be of service",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(33)),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: HexColor("#002C00")),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 5),
-                  IconButton(
-                    onPressed: () {
-                      sendMessage(_controller.text);
-                      _controller.clear();
-                    },
-                    icon: Icon(
-                      Icons.send,
-                      size: 28,
-                      color: HexColor('#002C00'),
-                    ),
-                  )
-                ],
-              ),
-            )
+            TextButton(
+              onPressed: () async {
+                try {
+                  dynamic conversationObject = {
+                    // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+                    'appId': '35cadec8d26f5cd827ba032ba39b23619',
+                  };
+
+                  dynamic result =
+                      await KommunicateFlutterPlugin.buildConversation(
+                          conversationObject);
+
+                  print("Conversation builder success : " + result.toString());
+                } catch (e) {
+                  print(e);
+                }
+              },
+              child: Text("ChatBod"),
+            ),
+
+            // Expanded(child: ChatBodService(messages: messages)),
+            // Container(
+            //   padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+            //   child: Row(
+            //     children: [
+            //       Expanded(
+            //         child: TextField(
+            //           controller: _controller,
+            //           decoration: InputDecoration(
+            //             filled: true,
+            //             fillColor: HexColor('#F5F6EA'),
+            //             hintText: "how may I be of service",
+            //             border: OutlineInputBorder(
+            //                 borderRadius: BorderRadius.circular(33)),
+            //             focusedBorder: OutlineInputBorder(
+            //               borderSide: BorderSide(color: HexColor("#002C00")),
+            //               borderRadius: BorderRadius.circular(25.7),
+            //             ),
+            //             enabledBorder: UnderlineInputBorder(
+            //               borderSide: const BorderSide(color: Colors.white),
+            //               borderRadius: BorderRadius.circular(25.7),
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //       SizedBox(width: 5),
+            //       IconButton(
+            //         onPressed: () {
+            //           sendMessage(_controller.text);
+            //           _controller.clear();
+            //         },
+            //         icon: Icon(
+            //           Icons.send,
+            //           size: 28,
+            //           color: HexColor('#002C00'),
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

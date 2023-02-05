@@ -15,9 +15,10 @@ import 'package:jmc/Pages/NotificationPage.dart';
 import 'package:jmc/Pages/NotificationPage.dart';
 import 'package:jmc/Utils/NextScreen.dart';
 
-import '../module/SessionController.dart';
+import '../Classes/SessionController.dart';
 import '../provider/SignInProvider.dart';
 import 'DonationPage.dart';
+import 'FirstPage.dart';
 import 'JmcAboutUs.dart';
 
 class HomePage extends StatefulWidget {
@@ -105,6 +106,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            
             //for show user name
             if (FirebaseAuth.instance.currentUser == null) ...[
               Container(

@@ -14,7 +14,6 @@ import 'package:jmc/provider/InternetProvider.dart';
 import 'package:jmc/provider/SignInProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'module/NotificationApi.dart';
 
 //puch Notification

@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -6,8 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:jmc/Classes/ImageUploadCheck.dart';
+import 'package:jmc/Classes/UserTotalPayment.dart';
+import 'package:jmc/Classes/UserTotalRewards.dart';
 
 import 'package:jmc/module/SetImage.dart';
+import 'package:jmc/Classes/UserData.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,7 +21,7 @@ import '../Pages/FirstPage.dart';
 import '../Utils/NextScreen.dart';
 import '../Utils/SnackBar.dart';
 import '../provider/SignInProvider.dart';
-import 'SessionController.dart';
+import '../Classes/SessionController.dart';
 import 'Tab1_HomeTab.dart';
 import 'Tab2_HistoryTab.dart';
 
@@ -60,7 +66,10 @@ class _ProfilePage_AfterLoginState extends State<ProfilePage_AfterLogin> {
 
     getData();
 
-    getImageUrl();
+    //if image uploade then only called
+    if (ImageUploadCheck().isImageUploaded == true) {
+      getImageUrl();
+    }
   }
 
   void getImageUrl() async {
@@ -130,6 +139,12 @@ class _ProfilePage_AfterLoginState extends State<ProfilePage_AfterLogin> {
                                   .onValue,
                               builder: (context, AsyncSnapshot snapshot) {
                                 if (snapshot.hasData) {
+                                  //store All data in Userdata class
+                                  Map<String, dynamic> jsonData = jsonDecode(
+                                      jsonEncode(snapshot.data.snapshot.value));
+                                  UserData.fromJson(jsonData);
+
+                                  //for showing datain this class
                                   Map<dynamic, dynamic> map =
                                       snapshot.data.snapshot.value;
                                   return Column(
@@ -186,7 +201,7 @@ class _ProfilePage_AfterLoginState extends State<ProfilePage_AfterLogin> {
                                               //E-mail
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    top: 3),
+                                                    top: 5, left: 18),
                                                 child: Text(
                                                   map['Email'],
                                                   style: const TextStyle(
@@ -286,8 +301,16 @@ class _ProfilePage_AfterLoginState extends State<ProfilePage_AfterLogin> {
                           padding: const EdgeInsets.only(left: 80),
                           child: Column(
                             children: [
+                              //for total donation amount
                               Text(
-                                '2',
+                                UserTotalPayment()
+                                            .userTotalPayment
+                                            .toString() ==
+                                        null
+                                    ? "0"
+                                    : UserTotalPayment()
+                                        .userTotalPayment
+                                        .toString(),
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 30,
@@ -323,7 +346,15 @@ class _ProfilePage_AfterLoginState extends State<ProfilePage_AfterLogin> {
                           child: Column(
                             children: [
                               Text(
-                                '2',
+                                UserTotalRewards()
+                                                .userTotalRewards
+                                                .toString() ==
+                                            null ||
+                                        UserTotalRewards().userTotalRewards == 0
+                                    ? "0"
+                                    : UserTotalRewards()
+                                        .userTotalRewards
+                                        .toString(),
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 30,

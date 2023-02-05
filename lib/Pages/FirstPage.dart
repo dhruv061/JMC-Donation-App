@@ -8,12 +8,10 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/ChatBod.dart';
 
 import 'package:jmc/Pages/DonationPage.dart';
-import 'package:jmc/Utils/SnackBar.dart';
 import 'package:jmc/module/ProfilePage_AfterLogin.dart';
 import 'package:jmc/module/defalutProfilePage.dart';
 
-import '../module/SessionController.dart';
-import '../provider/SignInProvider.dart';
+import '../Classes/SessionController.dart';
 import 'HomePage.dart';
 
 class FirstPage extends StatefulWidget {

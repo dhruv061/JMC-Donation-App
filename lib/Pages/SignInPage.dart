@@ -8,7 +8,7 @@ import 'package:jmc/module/ForgetPassword.dart';
 import 'package:provider/provider.dart';
 
 import '../Utils/SnackBar.dart';
-import '../module/SessionController.dart';
+import '../Classes/SessionController.dart';
 import '../provider/InternetProvider.dart';
 
 class SignInPage extends StatefulWidget {
@@ -31,8 +31,8 @@ class _SignInPageState extends State<SignInPage> {
   final _key = GlobalKey<FormState>();
 
   //for geeting input and store email & password
-  var email = "";
-  var password = "";
+  var email;
+  var password;
 
   //for Loading Indicator
   bool isLodaing = false;
@@ -78,6 +78,9 @@ class _SignInPageState extends State<SignInPage> {
         )
             .then((value) {
           SessionController().userId = value.user!.uid.toString();
+
+          print("User id assigned to session controller : " +
+              SessionController().userId.toString());
 
           //show succuful log-in meesage
           openSnackbar(
@@ -141,7 +144,7 @@ class _SignInPageState extends State<SignInPage> {
               children: [
                 Column(
                   // crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
+                  children: [
                     //for heading
                     Container(
                       margin: const EdgeInsets.only(top: 150),
@@ -343,42 +346,38 @@ class _SignInPageState extends State<SignInPage> {
 
                             //here we call method name signup for storing data in firebase
                             onPressed: () async {
-                              try {
-                                //for validation
-                                if (_key.currentState!.validate()) {
-                                  isLodaing = true;
-                                  setState(() {
-                                    //when user enter email & password then store those email and passwors in variable which intialize in top
-                                    email = emailController.text;
-                                    password = passwordController.text;
-                                  });
+                              //for validation
+                              if (_key.currentState!.validate()) {
+                                isLodaing = true;
+                                setState(() {
+                                  //when user enter email & password then store those email and passwors in variable which intialize in top
+                                  email = emailController.text;
+                                  password = passwordController.text;
+                                });
 
-                                  //for Showing Loaing Indicator
-                                  Future.delayed(
-                                    Duration(seconds: 3),
-                                    () {
-                                      setState(() {
-                                        isLodaing = true;
-                                      });
-                                    },
-                                  );
-
-                                  //for user login
-                                  userLogin();
-                                }
-
-                                //after run above line of code this Stop the Loading Indicator
+                                //for Showing Loaing Indicator
                                 Future.delayed(
-                                  Duration(seconds: 3),
+                                  Duration(seconds: 10),
                                   () {
                                     setState(() {
-                                      isLodaing = false;
+                                      isLodaing = true;
                                     });
                                   },
                                 );
-                              } catch (e) {
-                                openSnackbar(context, e.toString(), Colors.red);
+
+                                //for user login
+                                userLogin();
                               }
+
+                              // //after run above line of code this Stop the Loading Indicator
+                              // Future.delayed(
+                              //   Duration(seconds: 10),
+                              //   () {
+                              //     setState(() {
+                              //       isLodaing = false;
+                              //     });
+                              //   },
+                              // );
                             },
                           ),
                         ),

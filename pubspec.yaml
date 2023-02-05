@@ -42,17 +42,18 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_facebook_auth: ^4.4.1+1
+  flutter_launcher_icons: ^0.11.0
   flutter_local_notifications: ^11.0.1
   getwidget: ^3.0.1
   google_nav_bar: ^5.0.6
   google_sign_in: ^5.4.2
   hexcolor: ^2.0.7
-  http: ^0.13.5
   image_cropper: ^3.0.1
   image_picker: ^0.8.5+3
   introduction_screen: ^1.0.9
   pay: ^1.0.11
   pinput: ^2.2.12
+  printing: ^5.9.3
   provider: ^6.0.3
   quickalert: ^1.0.1
   razorpay_flutter: ^1.3.4
@@ -62,13 +63,22 @@ dependencies:
   shared_preferences: ^2.0.15
   smooth_page_indicator: ^1.0.0+2
   timezone: ^0.9.0
-  
-  
+  uuid: ^3.0.7
+  screenshot: ^1.3.0
+  pdf: ^3.8.4
+  path_provider: ^2.0.12
+  kommunicate_flutter: ^1.5.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icons/Logo.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -107,6 +117,12 @@ flutter:
         - asset: assets/fonts/GothamBold.ttf
         - asset: assets/fonts/GothamBook.ttf
         - asset: assets/fonts/GothamMedium.ttf
+    - family: GreatVibes
+      fonts:
+        - asset: assets/fonts/GreatVibesRegular.ttf
+    - family: Aclonica
+      fonts:
+        - asset: assets/fonts/AclonicaRegular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

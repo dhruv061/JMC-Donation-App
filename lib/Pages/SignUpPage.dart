@@ -18,7 +18,7 @@ import 'package:firebase_database/firebase_database.dart';
 import '../Utils/NextScreen.dart';
 import '../Utils/SnackBar.dart';
 import '../module/ProfilePage_AfterLogin.dart';
-import '../module/SessionController.dart';
+import '../Classes/SessionController.dart';
 import '../provider/InternetProvider.dart';
 import '../provider/SignInProvider.dart';
 import 'FirstPage.dart';

@@ -1,21 +1,18 @@
-import 'dart:convert';
 import 'dart:io';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/FirstPage.dart';
 import 'package:jmc/Utils/NextScreen.dart';
-
-import 'package:jmc/module/SessionController.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:jmc/Classes/SessionController.dart';
+import 'package:provider/provider.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
+
+import '../provider/InternetProvider.dart';
 
 class PaymentPage extends StatefulWidget {
   @override
@@ -38,109 +35,11 @@ class _PaymentPageState extends State<PaymentPage> {
     super.initState();
   }
 
-  // _genrateCertificate() async {
-  //   print("function started");
-
-  //   const String apiKey = 'bb_pr_69b1821f0ed9d09b1212274ef85c4a';
-
-  //   var data = {
-  //     "template": "V4WN6JDx0lnvD3Gqjk",
-  //     "modifications": [
-  //       {
-  //         "name": "pretitle",
-  //         "text": "This Certificate of",
-  //         "color": null,
-  //         "background": null
-  //       },
-  //       {
-  //         "name": "title",
-  //         "text": "Donation",
-  //         "color": null,
-  //         "background": null
-  //       },
-  //       {
-  //         "name": "subtitle",
-  //         "text": "is proudly presented to",
-  //         "color": null,
-  //         "background": null
-  //       },
-  //       {
-  //         "name": "awardee_name",
-  //         "text": "Dhruv Mavani",
-  //         "color": null,
-  //         "background": null
-  //       },
-  //       {
-  //         "name": "details",
-  //         "text": "We are truly grateful for your support and generosity",
-  //         "color": null,
-  //         "background": null
-  //       },
-  //       {
-  //         "name": "name_position1",
-  //         "text": "Jamnager Munciple Corporation",
-  //         "color": null,
-  //         "background": null
-  //       },
-  //       {
-  //         "name": "signature_container1",
-  //         "image_url":
-  //             "https://cdn.bannerbear.com/sample_images/welcome_bear_photo.jpg"
-  //       },
-  //       {
-  //         "name": "name_position2",
-  //         "text": "Prsedident",
-  //         "color": null,
-  //         "background": null
-  //       },
-  //       {
-  //         "name": "signature_container2",
-  //         "image_url":
-  //             "https://cdn.bannerbear.com/sample_images/welcome_bear_photo.jpg"
-  //       }
-  //     ],
-  //     "webhook_url": null,
-  //     "transparent": false,
-  //     "metadata": null,
-  //     "transparent": true,
-  //   };
-
-  //   print('\n');
-
-  //   final response = await http.post(
-  //     Uri.parse('https://api.bannerbear.com/v2/images'),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       "Authorization": "Bearer $apiKey"
-  //     },
-  //     body: json.encode(data),
-  //   );
-  //   print('\n');
-  //   print("Encode data");
-  //   print(json.encode(data));
-
-  //   print('\n');
-  //   print("Response created");
-  //   print("response code is : " + response.statusCode.toString());
-
-  //   if (response.statusCode == 202) {
-  //     final jsonResponse = json.decode(response.body);
-
-  //     print('\n');
-  //     print("ALL response data is here");
-  //     print(jsonResponse);
-
-  //     // final imageUrl = jsonResponse['image_url'];
-
-  //     // print("Image url is : " + imageUrl);
-  //   } else {
-  //     // Handle the error
-  //     // ...
-  //   }
-  // }
-
   //payment succeds
   Future<void> _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    //for Genrating Certificate Id
+    String Certificate_id = Uuid().v1();
+
     //store all payment detail with user detail in new database --> Cloud Firestore Database
     var paymentRef1 = FirebaseFirestore.instance
         .collection("users")
@@ -148,9 +47,10 @@ class _PaymentPageState extends State<PaymentPage> {
         .collection("payments");
     var payment1 = {
       "paymentId": response.paymentId,
-      "amount": amountController.text,
+      "amount": amountController.text ,
       "timestamp": FieldValue.serverTimestamp(),
-      "Status": "Success"
+      "Status": "Success",
+      "CertificateId": Certificate_id
     };
     paymentRef1.add(payment1);
 
@@ -166,7 +66,8 @@ class _PaymentPageState extends State<PaymentPage> {
       "paymentId": response.paymentId,
       "amount": amountController.text,
       "timestamp": DateTime.now().toIso8601String(),
-      "Status": "Success"
+      "Status": "Success",
+      "CertificateId": Certificate_id,
     };
     paymentRef2.push().set(payment2);
 
@@ -212,6 +113,8 @@ class _PaymentPageState extends State<PaymentPage> {
       print(e);
     }
   }
+  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -337,9 +240,28 @@ class _PaymentPageState extends State<PaymentPage> {
               height: 55,
               width: 300,
               child: TextButton(
-                onPressed: () {
-                  if (_key.currentState!.validate()) {
-                    lunchRazorPay();
+                onPressed: () async {
+                  //check internet is on or not
+                  final ip = context.read<InternetProvider>();
+                  await ip.checkInternetConnection();
+
+                  //for checking Internet
+                  if (ip.hasInternet == false) {
+                    //show pop-up box
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.warning,
+                      title: "Check connection",
+                      text: "Please turn on your internet connection",
+                      confirmBtnText: "Thanks!",
+                      confirmBtnColor: Color.fromARGB(255, 33, 112, 132),
+                      width: 25,
+                    );
+                  } else {
+                    //lanch RozerPay
+                    if (_key.currentState!.validate()) {
+                      lunchRazorPay();
+                    }
                   }
                 },
                 style: ButtonStyle(
@@ -360,14 +282,6 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
               ),
             ),
-
-            // TextButton(
-            //   onPressed: () {
-            //     // _createCertificate();
-            //     _genrateCertificate();
-            //   },
-            //   child: Text('Certificate'),
-            // ),
           ],
         ),
       ),

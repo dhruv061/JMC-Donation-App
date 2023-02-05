@@ -30,3 +30,9 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.incremental =false
+    }
+}
