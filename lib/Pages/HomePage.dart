@@ -106,7 +106,6 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            
             //for show user name
             if (FirebaseAuth.instance.currentUser == null) ...[
               Container(
@@ -185,113 +184,130 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            //for showing 2 boxes --> fund box & Total people Box
-            Container(
-              child: Row(
-                children: [
-                  //for Total Fund BOX and Total Fund Hading
-                  Container(
-                    child: Column(
+            StreamBuilder(
+              //this data comes from Real time database
+              stream: ref.child('EpGw9CWD6aetSfQWQmXqoVG4oJ23').onValue,
+              builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
+
+                  //for showing 2 boxes --> fund box & Total people Box
+                  return Container(
+                    child: Row(
                       children: [
-                        //for Total Fund BOX
+                        //for Total Fund BOX and Total Fund Hading
                         Container(
-                          margin: const EdgeInsets.only(left: 23, top: 17),
-                          padding: const EdgeInsets.only(top: 28, left: 6),
+                          child: Column(
+                            children: [
+                              //for Total Fund BOX
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(left: 23, top: 17),
+                                padding:
+                                    const EdgeInsets.only(top: 28, left: 6),
 
-                          height: 90,
-                          width: 150,
-                          // color: Colors.yellow,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(20)),
-                              border: Border.all(
-                                  width: 2, color: HexColor('#22E183'))),
+                                height: 90,
+                                width: 150,
+                                // color: Colors.yellow,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
+                                    border: Border.all(
+                                        width: 2, color: HexColor('#22E183'))),
 
-                          //show donation amount
-                          child: Text(
-                            "0",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontFamily: "Gotham",
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: HexColor("#22E183")),
+                                //show donation amount
+                                child: Text(
+                                  map['TotalFunds'],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: HexColor("#22E183")),
+                                ),
+                              ),
+
+                              //for Total Fund Hading
+                              Container(
+                                height: 20,
+                                width: 150,
+                                // color: Colors.pink,
+                                margin:
+                                    const EdgeInsets.only(left: 20, top: 12.5),
+
+                                child: const Text(
+                                  "Total Fund",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
 
-                        //for Total Fund Hading
+                        //for Benefited Life BOX an Benefited Life Hading
                         Container(
-                          height: 20,
-                          width: 150,
-                          // color: Colors.pink,
-                          margin: const EdgeInsets.only(left: 20, top: 12.5),
+                          child: Column(
+                            children: [
+                              //for Total Fund BOX
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(left: 20, top: 17),
+                                padding:
+                                    const EdgeInsets.only(top: 28, left: 6),
 
-                          child: const Text(
-                            "Total Fund",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontFamily: "Gotham",
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black),
+                                height: 90,
+                                width: 150,
+                                // color: Colors.yellow,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
+                                    border: Border.all(
+                                        width: 2, color: HexColor('#22E183'))),
+
+                                //show donation amount
+                                child: Text(
+                                  map['BenefitedLife'],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: HexColor("#22E183")),
+                                ),
+                              ),
+
+                              //for Total Fund Hading
+                              Container(
+                                height: 20,
+                                width: 150,
+                                // color: Colors.pink,
+                                margin:
+                                    const EdgeInsets.only(left: 18, top: 12.5),
+
+                                child: const Text(
+                                  "Benefited life",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-
-                  //for Benefited Life BOX an Benefited Life Hading
-                  Container(
-                    child: Column(
-                      children: [
-                        //for Total Fund BOX
-                        Container(
-                          margin: const EdgeInsets.only(left: 20, top: 17),
-                          padding: const EdgeInsets.only(top: 28, left: 6),
-
-                          height: 90,
-                          width: 150,
-                          // color: Colors.yellow,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(20)),
-                              border: Border.all(
-                                  width: 2, color: HexColor('#22E183'))),
-
-                          //show donation amount
-                          child: Text(
-                            "0",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontFamily: "Gotham",
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: HexColor("#22E183")),
-                          ),
-                        ),
-
-                        //for Total Fund Hading
-                        Container(
-                          height: 20,
-                          width: 150,
-                          // color: Colors.pink,
-                          margin: const EdgeInsets.only(left: 18, top: 12.5),
-
-                          child: const Text(
-                            "Benefited life",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontFamily: "Gotham",
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                  );
+                }
+                return Container();
+              },
             ),
 
             //add line

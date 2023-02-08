@@ -58,19 +58,6 @@ class _SignInPageState extends State<SignInPage> {
       openSnackbar(context, "Check your internet connection", Colors.red);
     } else {
       try {
-        // await FirebaseAuth.instance
-        //     .signInWithEmailAndPassword(email: email, password: password);
-
-        // //show succuful log-in meesage
-        // openSnackbar(
-        //     context, "Log-in Successfull", Color.fromARGB(255, 70, 213, 92));
-
-        // //after login go to profile Page
-        // Navigator.pushReplacement(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) => FirstPage(TempCheckUserLogin: 'false')));
-
         await auth
             .signInWithEmailAndPassword(
           email: email,
@@ -125,6 +112,8 @@ class _SignInPageState extends State<SignInPage> {
           //show Snack Bar when this error occur
           openSnackbar(context, "Wrong Password", Colors.red);
         }
+      } catch (e) {
+        print(e.toString());
       }
     }
   }
@@ -369,15 +358,15 @@ class _SignInPageState extends State<SignInPage> {
                                 userLogin();
                               }
 
-                              // //after run above line of code this Stop the Loading Indicator
-                              // Future.delayed(
-                              //   Duration(seconds: 10),
-                              //   () {
-                              //     setState(() {
-                              //       isLodaing = false;
-                              //     });
-                              //   },
-                              // );
+                              //after run above line of code this Stop the Loading Indicator
+                              Future.delayed(
+                                Duration(seconds: 10),
+                                () {
+                                  setState(() {
+                                    isLodaing = false;
+                                  });
+                                },
+                              );
                             },
                           ),
                         ),

@@ -5,8 +5,12 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import '../module/ChatBodService.dart';
+import '../provider/InternetProvider.dart';
 
 class Chatbod extends StatefulWidget {
   const Chatbod({Key? key}) : super(key: key);
@@ -99,24 +103,60 @@ class _ChatbodState extends State<Chatbod> {
         color: Colors.white,
         child: Column(
           children: [
-            TextButton(
-              onPressed: () async {
-                try {
-                  dynamic conversationObject = {
-                    // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
-                    'appId': '35cadec8d26f5cd827ba032ba39b23619',
-                  };
+            //chatboat icon
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 230),
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: HexColor("#D3FADE"),
+                      borderRadius: BorderRadius.circular(100)
+                      //more than 50% of width makes circle
+                      ),
+                  child: IconButton(
+                    onPressed: () async {
+                      //check internet is on or not
+                      final ip = context.read<InternetProvider>();
+                      await ip.checkInternetConnection();
 
-                  dynamic result =
-                      await KommunicateFlutterPlugin.buildConversation(
-                          conversationObject);
+                      //for checking Internet
+                      if (ip.hasInternet == false) {
+                        //show pop-up box
+                        QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.warning,
+                          title: "Check connection",
+                          text: "Please turn on your internet connection",
+                          confirmBtnText: "Thanks!",
+                          confirmBtnColor: Color.fromARGB(255, 33, 112, 132),
+                          width: 25,
+                        );
+                      } else {
+                        try {
+                          dynamic conversationObject = {
+                            // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
+                            'appId': '35cadec8d26f5cd827ba032ba39b23619',
+                          };
 
-                  print("Conversation builder success : " + result.toString());
-                } catch (e) {
-                  print(e);
-                }
-              },
-              child: Text("ChatBod"),
+                          dynamic result =
+                              await KommunicateFlutterPlugin.buildConversation(
+                                  conversationObject);
+
+                          print("Conversation builder success : " +
+                              result.toString());
+                        } catch (e) {
+                          print(e);
+                        }
+                      }
+                    },
+                    icon: Icon(Icons.chat_rounded),
+                    color: HexColor("#22E183"),
+                    iconSize: 40,
+                  ),
+                ),
+              ),
             ),
 
             // Expanded(child: ChatBodService(messages: messages)),

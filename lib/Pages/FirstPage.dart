@@ -8,6 +8,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/ChatBod.dart';
 
 import 'package:jmc/Pages/DonationPage.dart';
+import 'package:jmc/Pages/OptionChatBoat.dart';
 import 'package:jmc/module/ProfilePage_AfterLogin.dart';
 import 'package:jmc/module/defalutProfilePage.dart';
 
@@ -41,7 +42,8 @@ class _FirstPageState extends State<FirstPage> {
     Screens = [
       HomePage(CheckUserLogin: widget.TempCheckUserLogin),
       const DonationPage(),
-      const Chatbod(),
+      // const Chatbod(),
+      const OptionChatBot(),
 
       //for show diffrent screen
       if (FirebaseAuth.instance.currentUser != null) ...[

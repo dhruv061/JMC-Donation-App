@@ -158,7 +158,7 @@ class _DemoCertificateState extends State<DemoCertificate> {
                 ),
               ),
 
-              //last part
+              //last part --> sign and seal
               Row(
                 children: [
                   Padding(
@@ -172,19 +172,39 @@ class _DemoCertificateState extends State<DemoCertificate> {
                 ],
               ),
 
-              Padding(
-                padding: EdgeInsets.only(left: 250, top: 30),
-                child: IconButton(
-                  onPressed: () async {
-                    //capture screen shot
-                    final image = await screenshotController.capture();
+              //for back and back screen option
+              Row(
+                children: [
+                  //for back button
+                  Padding(
+                    padding: EdgeInsets.only(left: 15, top: 30),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.arrow_back),
+                      iconSize: 30,
+                    ),
+                  ),
 
-                    //share screnshot
-                    saveAndShare(image!);
-                  },
-                  icon: Icon(Icons.share),
-                  iconSize: 30,
-                ),
+                  //for share button
+                  Padding(
+                    padding: EdgeInsets.only(left: 210, top: 30),
+                    child: IconButton(
+                      onPressed: () async {
+                        //capture screen shot
+                        final image = await screenshotController.capture();
+
+                        //share screnshot
+                        saveAndShare(image!);
+                      },
+                      icon: Icon(Icons.share),
+                      iconSize: 30,
+                    ),
+                  ),
+
+                  //for back Screen Button
+                ],
               ),
 
               // TextButton(
