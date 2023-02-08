@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +49,7 @@ class _OptionChatBotState extends State<OptionChatBot> {
 
                 //for Text
                 Text(
-                  "How Can I Help \n  You Today?",
+                  "What?".tr,
                   style: TextStyle(
                       color: HexColor("#002C00"),
                       fontFamily: "Gotham",
@@ -61,7 +62,7 @@ class _OptionChatBotState extends State<OptionChatBot> {
                 Padding(
                   padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
                   child: SwipeableButtonView(
-                    buttonText: 'START CONVERSATION',
+                    buttonText: 'Start_Converstaion'.tr,
                     buttonWidget: Container(
                       child: Icon(
                         Icons.arrow_forward_ios_rounded,

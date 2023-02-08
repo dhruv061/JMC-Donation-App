@@ -5,6 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -114,8 +115,8 @@ class _HomePageState extends State<HomePage> {
                 height: 60,
                 width: 340,
                 // color: Colors.pink,
-                child: const Text(
-                  "Hello, Donor ",
+                child: Text(
+                  "Hello_1".tr,
                   style: TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 25,
@@ -174,8 +175,8 @@ class _HomePageState extends State<HomePage> {
               height: 50,
               width: 340,
               // color: Colors.yellow,
-              child: const Text(
-                "With just RS. 10/- you can help millions people",
+              child: Text(
+                "Hq_1".tr,
                 style: TextStyle(
                   fontFamily: "Gotham",
                   fontSize: 15,
@@ -235,10 +236,10 @@ class _HomePageState extends State<HomePage> {
                                 margin:
                                     const EdgeInsets.only(left: 20, top: 12.5),
 
-                                child: const Text(
-                                  "Total Fund",
+                                child: Text(
+                                  "Tf".tr,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontFamily: "Gotham",
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -289,10 +290,10 @@ class _HomePageState extends State<HomePage> {
                                 margin:
                                     const EdgeInsets.only(left: 18, top: 12.5),
 
-                                child: const Text(
-                                  "Benefited life",
+                                child: Text(
+                                  "Bl".tr,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontFamily: "Gotham",
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -448,10 +449,10 @@ class _HomePageState extends State<HomePage> {
                           height: 30,
                           width: 190,
                           // color: Colors.blue,
-                          child: const Text(
-                            "Invite Your friends",
+                          child: Text(
+                            "Invite".tr,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: "Gotham",
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -466,10 +467,10 @@ class _HomePageState extends State<HomePage> {
                           height: 30,
                           width: 185,
                           // color: Colors.blue,
-                          child: const Text(
-                            "and fight for odds togather",
+                          child: Text(
+                            "Fight_for_odds".tr,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: "Gotham",
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400,
@@ -481,7 +482,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           margin: const EdgeInsets.only(top: 6, left: 3),
                           height: 40,
-                          width: 115,
+                          width: 135,
                           // color: Colors.white,
                           decoration: BoxDecoration(
                               borderRadius:
@@ -497,9 +498,9 @@ class _HomePageState extends State<HomePage> {
                             },
 
                             //for button text
-                            child: const Text(
-                              "Invite friends",
-                              style: TextStyle(
+                            child: Text(
+                              "Invite_button".tr,
+                              style: const TextStyle(
                                 letterSpacing: 0.4,
                                 fontFamily: "Gotham",
                                 fontSize: 13,

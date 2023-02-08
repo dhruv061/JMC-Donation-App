@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/FirstPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,8 +24,8 @@ class Scrolling_Page_2 extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 100, left: 31, top: 122),
             padding: const EdgeInsets.only(top: 490),
-            child: const Text("What",
-                style: TextStyle(
+            child: Text("What_1".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -56,7 +57,7 @@ class Scrolling_Page_2 extends StatelessWidget {
               //for button text
               // ignore: prefer_const_constructors
               child: Text(
-                "Skip",
+                "Skip_1".tr,
                 style: const TextStyle(
                     color: Colors.white,
                     letterSpacing: 0.4,
@@ -72,8 +73,8 @@ class Scrolling_Page_2 extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 100, left: 32, top: 110),
             padding: const EdgeInsets.only(top: 540),
             //child: const Text("Welcome",style: TextStyle(fontFamily: "Gotham",fontSize: 32,fontWeight: FontWeight.bold,color: Colors.white,)),
-            child: const Text("JMC app will help you to donate needy peoples",
-                style: TextStyle(
+            child: Text("Quote_2".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     height: 1.2,
                     fontSize: 16,

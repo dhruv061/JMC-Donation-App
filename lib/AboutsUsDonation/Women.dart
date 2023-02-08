@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -35,9 +36,9 @@ class _WomanAboutUsState extends State<WomanAboutUs> {
           ),
         ),
 
-        title: const Center(
+        title: Center(
           child: Text(
-            'Info          ',
+            'Women_info'.tr,
             style: TextStyle(color: Colors.black, fontFamily: 'Gotham'),
           ),
         ),
@@ -51,9 +52,9 @@ class _WomanAboutUsState extends State<WomanAboutUs> {
             //for Heading
             Container(
               margin: const EdgeInsets.only(top: 20),
-              child: const Text(
-                "Skill development for WomanAboutUs",
-                style: TextStyle(
+              child: Text(
+                "Skill_development_for_Women".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
@@ -168,10 +169,10 @@ class _WomanAboutUsState extends State<WomanAboutUs> {
                   //box 1 information
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "Women and girls make up 43% of the agricultural workforce in the global south. In Eastern, Central, and Southern Africa, women and girls produce nearly 70% of the region's food crops by volume.\n\nBut women have a 27% higher chance than men of being severely food insecure.\n\nFor every dollar made by a man, a WomanAboutUs earns 77 cents, and 90% of that income is invested on their family, compared to 40% for men.\n\nWomen farmers have significantly less access to, control over, and ownership of land and other productive assets compared to their male counterparts: women account for only 12.8 per cent of agricultural landholders in the world.\n\nEnvironmental degradation and climate change have disproportionate impacts on women and children - Globally, women are 14 times more likely than men to die during a disaster.\n\nWomen are less likely to be entrepreneurs and face more disadvantages starting businesses: In 40% of economies, women's early-stage entrepreneurial activity is half or less than half of that of men's.",
+                  child: Text(
+                    "Women_info1".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/FirstPage.dart';
 import 'package:jmc/Utils/NextScreen.dart';
@@ -47,7 +48,7 @@ class _PaymentPageState extends State<PaymentPage> {
         .collection("payments");
     var payment1 = {
       "paymentId": response.paymentId,
-      "amount": amountController.text ,
+      "amount": amountController.text,
       "timestamp": FieldValue.serverTimestamp(),
       "Status": "Success",
       "CertificateId": Certificate_id
@@ -113,8 +114,6 @@ class _PaymentPageState extends State<PaymentPage> {
       print(e);
     }
   }
-  
-  
 
   @override
   Widget build(BuildContext context) {
@@ -135,9 +134,9 @@ class _PaymentPageState extends State<PaymentPage> {
           ),
         ),
 
-        title: const Center(
+        title: Center(
           child: Text(
-            'Donating           ',
+            'Donating'.tr,
             style: TextStyle(color: Colors.black, fontFamily: 'Gotham'),
           ),
         ),
@@ -153,10 +152,10 @@ class _PaymentPageState extends State<PaymentPage> {
               // color: Colors.yellow,
               height: 50,
               width: 310,
-              child: const Text(
-                "You're just one step away from donation",
+              child: Text(
+                "Donate_line".tr,
                 textAlign: TextAlign.left,
-                style: TextStyle(
+                style: const TextStyle(
                     fontFamily: 'Gotham',
                     // fontWeight: FontWeight.normal,
                     fontSize: 18),
@@ -180,9 +179,9 @@ class _PaymentPageState extends State<PaymentPage> {
             Container(
               margin: const EdgeInsets.only(left: 50, top: 20),
               alignment: Alignment.centerLeft,
-              child: const Text(
-                "How much?",
-                style: TextStyle(
+              child: Text(
+                "How_much?".tr,
+                style: const TextStyle(
                     color: Colors.black,
                     letterSpacing: 0.4,
                     fontFamily: "Gotham",
@@ -209,7 +208,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       Icons.currency_rupee,
                       color: HexColor("#002C00"),
                     ),
-                    hintText: "Amount",
+                    hintText: "Amount".tr,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(33)),
                     focusedBorder: OutlineInputBorder(
@@ -271,9 +270,9 @@ class _PaymentPageState extends State<PaymentPage> {
                         borderRadius: BorderRadius.circular(20)))),
 
                 //for button text
-                child: const Text(
-                  "Donate",
-                  style: TextStyle(
+                child: Text(
+                  "Donate".tr,
+                  style: const TextStyle(
                       color: Colors.black,
                       letterSpacing: 0.4,
                       fontFamily: "Gotham",

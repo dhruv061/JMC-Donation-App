@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'package:jmc/BackEnd/Auth.dart';
+import 'package:jmc/Language/language_screen2.dart';
 import 'package:jmc/Pages/FirstPage.dart';
 import 'package:jmc/module/MyRewarda.dart';
 import 'package:jmc/Utils/NextScreen.dart';
@@ -47,11 +48,13 @@ class _Tab1_HomeTabState extends State<Tab1_HomeTab> {
                 padding: 93,
               ),
 
-              //settings
+              //language settings
               ResuableContainer(
                   icone: Icons.settings,
                   title: 'language Setting',
-                  function: () {},
+                  function: () {
+                    nextScreen(context, LanguageScreen2());
+                  },
                   padding: 43),
 
               //share App
@@ -116,8 +119,6 @@ class _Tab1_HomeTabState extends State<Tab1_HomeTab> {
                     }
                   },
                   padding: 132),
-
-              
             ],
           ),
         ),

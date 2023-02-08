@@ -1,7 +1,9 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
 import 'package:jmc/BackEnd/Auth.dart';
+import 'package:jmc/Language/language_controller.dart';
 import 'package:jmc/Pages/FirstPage.dart';
 import 'package:jmc/Pages/HomePage.dart';
 import 'package:jmc/Pages/OnBodingPage.dart';
@@ -14,7 +16,10 @@ import 'package:jmc/provider/InternetProvider.dart';
 import 'package:jmc/provider/SignInProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Language/app_constants.dart';
+import 'Language/message.dart';
 import 'module/NotificationApi.dart';
+import 'Language/dep.dart' as dep;
 
 //puch Notification
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
@@ -38,6 +43,9 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  //for language settings
+  Map<String, Map<String, String>> _languages = await dep.init();
+
   //background Notification Handler
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
@@ -60,7 +68,10 @@ Future main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(SMC(showHome: showHome));
+  runApp(SMC(
+    showHome: showHome,
+    languages: _languages,
+  ));
 }
 
 //define nevigator key
@@ -69,31 +80,61 @@ final navigatorKey = GlobalKey<NavigatorState>();
 class SMC extends StatelessWidget {
   final bool showHome;
 
-  const SMC({Key? key, required this.showHome}) : super(key: key);
+  const SMC({Key? key, required this.showHome, required this.languages})
+      : super(key: key);
+  final Map<String, Map<String, String>> languages;
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: ((context) => SignInProvider()),
-        ),
-        ChangeNotifierProvider(
-          create: ((context) => InternetProvider()),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => NotificationService(),
-        ),
-      ],
+    return GetBuilder<LocalizationController>(
+        builder: (localizationController) {
+      return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: ((context) => SignInProvider()),
+          ),
+          ChangeNotifierProvider(
+            create: ((context) => InternetProvider()),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => NotificationService(),
+          ),
+        ],
 
-      //for Homepage
+        //for Homepage
+        child: GetMaterialApp(
+          locale: localizationController.locale,
+          translations: Messages(languages: languages),
+          fallbackLocale: Locale(AppConstants.languages[0].languageCode,
+              AppConstants.languages[0].countryCode),
+          // translations: Localestring(),
+          // locale: Locale('en','US '),
+          home: showHome ? SplashScreen() : const OnboardingScreen(),
+        ),
+      );
+    });
 
-      child: MaterialApp(
-        home: showHome ? SplashScreen() : OnboardingScreen(),
-        // home: FirstPage(TempCheckUserLogin: 'false'),
-        // home: OnboardingScreen(),
-        // home: SplashScreen(),
-      ),
-    );
+    // return MultiProvider(
+    //   providers: [
+    //     ChangeNotifierProvider(
+    //       create: ((context) => SignInProvider()),
+    //     ),
+    //     ChangeNotifierProvider(
+    //       create: ((context) => InternetProvider()),
+    //     ),
+    //     ChangeNotifierProvider(
+    //       create: (_) => NotificationService(),
+    //     ),
+    //   ],
+
+    //   //for Homepage
+
+    //   child: MaterialApp(
+    //     home: showHome ? SplashScreen() : OnboardingScreen(),
+    //     // home: FirstPage(TempCheckUserLogin: 'false'),
+    //     // home: OnboardingScreen(),
+    //     // home: SplashScreen(),
+    //   ),
+    // );
   }
 }

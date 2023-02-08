@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -35,9 +36,9 @@ class _AdoptionAboutUsState extends State<AdoptionAboutUs> {
           ),
         ),
 
-        title: const Center(
+        title: Center(
           child: Text(
-            'Info          ',
+            'Adoption_info'.tr,
             style: TextStyle(color: Colors.black, fontFamily: 'Gotham'),
           ),
         ),
@@ -49,9 +50,9 @@ class _AdoptionAboutUsState extends State<AdoptionAboutUs> {
             //heading
             Container(
               margin: const EdgeInsets.only(top: 20),
-              child: const Text(
-                "Orphan Adoption",
-                style: TextStyle(
+              child: Text(
+                "Orphan_Adoption".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
@@ -161,10 +162,10 @@ class _AdoptionAboutUsState extends State<AdoptionAboutUs> {
                   //box 1 information
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "Every child deserves to feel happy, healthy, safe and most importantly, loved. Children are the world's most valuable resources and its best hope for the future. Those kids who have lost any or both of their parents are like the flowers without a gardener to protect them, so we decided to be their lost gardener.",
+                  child: Text(
+                    "Adoption_info1".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -191,10 +192,10 @@ class _AdoptionAboutUsState extends State<AdoptionAboutUs> {
                 Container(
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "Every child deserves to feel happy, healthy, safe and most importantly, loved. Children are the world's most valuable resources and its best hope for the future. Those kids who have lost any or both of their parents are like the flowers without a gardener to protect them, so we decided to be their lost gardener.\n\n140 million children in this world have lost one or both parents. (WHO)\n\nContinent Asia is the home to an estimated 61 million orphans.\n\nEvery 2.2 seconds a child loses a parent\n\nEveryday 5,760 more children become orphans.Our aim is to provide best education and offer all the opportunities of life to the orphans.",
+                  child: Text(
+                    "Adoption_info2".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -228,9 +229,9 @@ class _AdoptionAboutUsState extends State<AdoptionAboutUs> {
                             borderRadius: BorderRadius.circular(15)))),
 
                     //for button text
-                    child: const Text(
-                      "Contribute",
-                      style: TextStyle(
+                    child: Text(
+                      "Contribute".tr,
+                      style: const TextStyle(
                           color: Colors.black,
                           letterSpacing: 0.4,
                           fontFamily: "Gotham",

@@ -3,6 +3,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 // ignore: camel_case_types
@@ -30,7 +31,7 @@ class JmcAboutUs extends StatelessWidget {
         title: Container(
           margin: EdgeInsets.only(left: 70, top: 5),
           child: Text(
-            'About',
+            'About'.tr,
             style: TextStyle(
                 color: Colors.black, fontFamily: 'Gotham', fontSize: 26),
           ),
@@ -50,7 +51,7 @@ class JmcAboutUs extends StatelessWidget {
                 margin: EdgeInsets.only(top: 10),
                 color: Colors.white,
                 child: Text(
-                  "ABOUT US",
+                  "ABOUT_US".tr,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -67,7 +68,7 @@ class JmcAboutUs extends StatelessWidget {
               margin: EdgeInsets.all(5),
               color: Colors.white,
               child: Text(
-                "           Jamnagar is a coastal town of Gujarat in India.Jamnagar is having the only Ayurvedic University in India.Jamnagar is the hometown of world famous cricketers His Royal Highness Jam Ranjitsinhji, Duleepsinhji and Ajay Jadeja. The \"Bala Hanuman Temple\" is listed in the Guinness Book of World Records for the continuous chanting of \"Ram Dhun\" since 1st August 1964.Jamnagar is also home to all the three defense forces of India.The town is also famous for its 'Brass Products', 'Bandhani' and handicrafts.",
+                "JMC_about_us".tr,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontFamily: 'Gotham',
@@ -89,7 +90,7 @@ class JmcAboutUs extends StatelessWidget {
                 margin: EdgeInsets.all(5),
                 color: Colors.white,
                 child: Text(
-                  "History of JMC",
+                  "History_of_JMC".tr,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -106,7 +107,7 @@ class JmcAboutUs extends StatelessWidget {
               margin: EdgeInsets.all(5),
               color: Colors.white,
               child: Text(
-                "           Jamnagar Municipal Corporation was established on 6th of October 1981.Jamnagar Municipal Corporation has an area of around 26.40 square Kms. and a population of 4,45,397 as per Census-2001.All the administrative activities of the J.M.C. is conducted as per Bombay Provincial Municipal Corporation Act 1949.",
+                "History_of_JMC_detail".tr,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontFamily: 'Gotham',
@@ -128,7 +129,7 @@ class JmcAboutUs extends StatelessWidget {
                 margin: EdgeInsets.all(5),
                 color: Colors.white,
                 child: Text(
-                  "Mayor",
+                  "Mayor".tr,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -156,7 +157,7 @@ class JmcAboutUs extends StatelessWidget {
               margin: EdgeInsets.only(top: 12),
               color: Colors.white,
               child: Text(
-                "           Smt. Binaben Ashokbhai Kothari Has been appointed as Mayor in Jamnagar Municipal Corporation since 12-03-2021. She has done BA in political science. She Served as the Vice President and General Secretary of Mahila Morcha in Bharatiya Janata Party. She Elected as corporator from Bharatiya Janata Party in ward no.5 in 2015.",
+                "Mayor_detail".tr,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontFamily: 'Gotham',
@@ -178,7 +179,7 @@ class JmcAboutUs extends StatelessWidget {
                 margin: EdgeInsets.all(5),
                 color: Colors.white,
                 child: Text(
-                  "Municipal Commissioner",
+                  "Municipal_Commissioner".tr,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -209,7 +210,7 @@ class JmcAboutUs extends StatelessWidget {
               margin: EdgeInsets.only(top: 12),
               color: Colors.white,
               child: Text(
-                "           Shri. Vijaykumar Kharadi IAS is a municipal commissioner of JMC. He has done BE In computer.Previously, appointed collector in dahod and his services were placed at the disposal of urban development & urban housing department for appointment as municipal commissioner.",
+                "Municipal_Commissioner_detail".tr,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontFamily: 'Gotham',
@@ -231,7 +232,7 @@ class JmcAboutUs extends StatelessWidget {
                 margin: EdgeInsets.all(5),
                 color: Colors.white,
                 child: Text(
-                  "Contact us",
+                  "Contact_us".tr,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -246,7 +247,7 @@ class JmcAboutUs extends StatelessWidget {
               margin: EdgeInsets.all(5),
               color: Colors.white,
               child: Text(
-                " Address: Jamnagar Municipal  Corporation,Jubilee Garden, Jamnagar \n Phone: (0288) - 2550231 - 235 \n Toll Free: 1800 233 0131 \n Email : mcjamnagar@gmail.com",
+                "Contact_us_detail".tr,
                 style: TextStyle(
                     color: HexColor("#345EA8"),
                     fontFamily: 'Gotham',

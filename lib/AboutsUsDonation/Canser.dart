@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Utils/NextScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -35,9 +36,9 @@ class _CanserAboutUsState extends State<CanserAboutUs> {
           ),
         ),
 
-        title: const Center(
+        title: Center(
           child: Text(
-            'Info          ',
+            'Cancer_info'.tr,
             style: TextStyle(color: Colors.black, fontFamily: 'Gotham'),
           ),
         ),
@@ -51,9 +52,9 @@ class _CanserAboutUsState extends State<CanserAboutUs> {
             //Heading Part
             Container(
               margin: const EdgeInsets.only(top: 20),
-              child: const Text(
-                "Support Cancer Patients",
-                style: TextStyle(
+              child: Text(
+                "Support_cancer_patients".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
@@ -168,10 +169,10 @@ class _CanserAboutUsState extends State<CanserAboutUs> {
                   //box 1 information
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "When you have been diagnosed with cancer, you are considered a cancer survivor from that moment throughout the rest of your life. Surviving cancer has physical, mental, emotional, social, and financial consequences that start with diagnosis and continue through treatment and beyond.\n\nWe hope for remission. We hope to prolong life by averting death through medical treatment and supportive care. Or, if disease progresses, we hope to control pain, side effects, and suffering.",
+                  child: Text(
+                    "Cancer_info1".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -205,9 +206,9 @@ class _CanserAboutUsState extends State<CanserAboutUs> {
                             borderRadius: BorderRadius.circular(15)))),
 
                     //for button text
-                    child: const Text(
-                      "Contribute",
-                      style: TextStyle(
+                    child: Text(
+                      "Contribute".tr,
+                      style: const TextStyle(
                           color: Colors.black,
                           letterSpacing: 0.4,
                           fontFamily: "Gotham",

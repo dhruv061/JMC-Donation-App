@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Utils/NextScreen.dart';
 
@@ -37,8 +38,8 @@ class DonationPage extends StatelessWidget {
                       height: 25,
                       width: 361,
                       color: HexColor("#22E183"),
-                      child: const Text(
-                        "Choose Where to donate",
+                      child: Text(
+                        "Choose".tr,
                         style: TextStyle(
                             fontFamily: "Gotham",
                             color: Colors.black,
@@ -67,9 +68,9 @@ class DonationPage extends StatelessWidget {
                           Container(
                             //sub Heading
                             margin: const EdgeInsets.only(bottom: 7),
-                            child: const Text(
-                              "JMC delivers your donation",
-                              style: TextStyle(
+                            child: Text(
+                              "JMC_delivers".tr,
+                              style: const TextStyle(
                                   fontFamily: "Gotham",
                                   color: Colors.black,
                                   fontSize: 15,
@@ -122,9 +123,9 @@ class DonationPage extends StatelessWidget {
                               //heading
                               margin: const EdgeInsets.only(top: 10),
                               padding: const EdgeInsets.only(right: 120),
-                              child: const Text(
-                                "Food for needy",
-                                style: TextStyle(
+                              child: Text(
+                                "Food_for_needy".tr,
+                                style: const TextStyle(
                                     fontFamily: "Gotham",
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
@@ -134,8 +135,8 @@ class DonationPage extends StatelessWidget {
                               //box 1 information
                               margin: const EdgeInsets.only(top: 8),
                               padding: const EdgeInsets.only(left: 21),
-                              child: const Text(
-                                "There are several villages in gujarat, Where people are in below povert line facing a great challange for single say meal",
+                              child: Text(
+                                "Food_quote".tr,
                               ),
                             ),
                           ],
@@ -162,8 +163,8 @@ class DonationPage extends StatelessWidget {
                           ),
 
                           //for button text
-                          child: const Text(
-                            "Donate",
+                          child: Text(
+                            "Donate".tr,
                             style: TextStyle(
                                 color: Colors.black,
                                 letterSpacing: 0.4,
@@ -180,7 +181,7 @@ class DonationPage extends StatelessWidget {
 
               //second box
               Container(
-                height: 365,
+                height: 400,
                 width: 303,
                 margin: const EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
@@ -208,10 +209,10 @@ class DonationPage extends StatelessWidget {
                           Container(
                             //heading
                             margin: const EdgeInsets.only(top: 10),
-                            padding: const EdgeInsets.only(right: 55),
-                            child: const Text(
-                              "Help for night shelters",
-                              style: TextStyle(
+                            padding: const EdgeInsets.only(right: 90),
+                            child: Text(
+                              "Help_for_homeless".tr,
+                              style: const TextStyle(
                                   fontFamily: "Gotham",
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
@@ -221,8 +222,8 @@ class DonationPage extends StatelessWidget {
                             //box 2 information
                             margin: const EdgeInsets.only(top: 8),
                             padding: const EdgeInsets.only(left: 21),
-                            child: const Text(
-                              "In large cities, Many times we can see night shelter that have no amenites for sleep. this type of people sleeps at",
+                            child: Text(
+                              "Help_quote".tr,
                             ),
                           ),
                         ],
@@ -246,9 +247,9 @@ class DonationPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20)))),
 
                         //for button text
-                        child: const Text(
-                          "Donate",
-                          style: TextStyle(
+                        child: Text(
+                          "Donate".tr,
+                          style: const TextStyle(
                               color: Colors.black,
                               letterSpacing: 0.4,
                               fontFamily: "Gotham",
@@ -292,8 +293,8 @@ class DonationPage extends StatelessWidget {
                             //heading
                             margin: const EdgeInsets.only(top: 10),
                             padding: const EdgeInsets.only(right: 110),
-                            child: const Text(
-                              "Fodders for cow",
+                            child: Text(
+                              "Fodders_for_cow".tr,
                               style: const TextStyle(
                                   fontFamily: "Gotham",
                                   fontSize: 18,
@@ -304,8 +305,8 @@ class DonationPage extends StatelessWidget {
                             //box 3 information
                             margin: const EdgeInsets.only(top: 8),
                             padding: const EdgeInsets.only(left: 21),
-                            child: const Text(
-                              "The cow is considered as mother in indian culture and feeding the cow is considers aspicious.",
+                            child: Text(
+                              "Fooder_quote".tr,
                             ),
                           ),
                         ],
@@ -329,8 +330,8 @@ class DonationPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20)))),
 
                         //for button text
-                        child: const Text(
-                          "Donate",
+                        child: Text(
+                          "Donate".tr,
                           style: const TextStyle(
                               color: Colors.black,
                               letterSpacing: 0.4,
@@ -346,7 +347,7 @@ class DonationPage extends StatelessWidget {
 
               //fourth box
               Container(
-                height: 395,
+                height: 480,
                 width: 303,
                 margin: const EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
@@ -373,9 +374,9 @@ class DonationPage extends StatelessWidget {
                             //heading
                             margin: const EdgeInsets.only(top: 13, left: 12),
                             padding: const EdgeInsets.only(right: 65),
-                            child: const Text(
-                              "Women Empowerment",
-                              style: TextStyle(
+                            child: Text(
+                              "Women_Empowerment".tr,
+                              style: const TextStyle(
                                   fontFamily: "Gotham",
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
@@ -385,8 +386,8 @@ class DonationPage extends StatelessWidget {
                             //box 4 information
                             margin: const EdgeInsets.only(top: 7),
                             padding: const EdgeInsets.only(left: 21),
-                            child: const Text(
-                              "The road to gender equality remains long and ever-shifting particularly when it comes to the nuanced ways gender intersects eith race, class and sexuality",
+                            child: Text(
+                              "Women_quote".tr,
                             ),
                           ),
                         ],
@@ -410,8 +411,8 @@ class DonationPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20)))),
 
                         //for button text
-                        child: const Text(
-                          "Donate",
+                        child: Text(
+                          "Donate".tr,
                           style: TextStyle(
                               color: Colors.black,
                               letterSpacing: 0.4,
@@ -456,9 +457,9 @@ class DonationPage extends StatelessWidget {
                             //heading
                             margin: const EdgeInsets.only(top: 10),
                             padding: const EdgeInsets.only(right: 100),
-                            child: const Text(
-                              "Orphan adoption",
-                              style: TextStyle(
+                            child: Text(
+                              "Orphan_adoption".tr,
+                              style: const TextStyle(
                                   fontFamily: "Gotham",
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
@@ -468,8 +469,8 @@ class DonationPage extends StatelessWidget {
                             //box 4 information
                             margin: const EdgeInsets.only(top: 7),
                             padding: const EdgeInsets.only(left: 21),
-                            child: const Text(
-                              "To have a kid is a parent's biggest happiness. Adoption seems to be the most effective way of achieving this joy. It arises as to the panacea to those who crave children's plight. Adoption can be the loveliest option not only for single parent and childless couples but also for homeless kids. It enables a parent-child relationship to be established between not biologically related",
+                            child: Text(
+                              "Orphan_quote".tr,
                             ),
                           ),
                         ],
@@ -493,9 +494,9 @@ class DonationPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20)))),
 
                         //for button text
-                        child: const Text(
-                          "Donate",
-                          style: TextStyle(
+                        child: Text(
+                          "Donate".tr,
+                          style: const TextStyle(
                               color: Colors.black,
                               letterSpacing: 0.4,
                               fontFamily: "Gotham",
@@ -510,7 +511,7 @@ class DonationPage extends StatelessWidget {
 
               //sixth box
               Container(
-                height: 385,
+                height: 450,
                 width: 303,
                 margin: const EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
@@ -539,9 +540,9 @@ class DonationPage extends StatelessWidget {
                             //heading
                             margin: const EdgeInsets.only(top: 10),
                             padding: const EdgeInsets.only(right: 40),
-                            child: const Text(
-                              "Support cancer patients",
-                              style: TextStyle(
+                            child: Text(
+                              "Support_cancer_patients".tr,
+                              style: const TextStyle(
                                   fontFamily: "Gotham",
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
@@ -551,8 +552,8 @@ class DonationPage extends StatelessWidget {
                             //box 4 information
                             margin: const EdgeInsets.only(top: 7),
                             padding: const EdgeInsets.only(left: 21),
-                            child: const Text(
-                              "There's almost always something to smile about you can do anything you set your mind to. When cancer happens, you don't put life on hold",
+                            child: Text(
+                              "Cancer_quote".tr,
                             ),
                           ),
                         ],
@@ -576,9 +577,9 @@ class DonationPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20)))),
 
                         //for button text
-                        child: const Text(
-                          "Donate",
-                          style: TextStyle(
+                        child: Text(
+                          "Donate".tr,
+                          style: const TextStyle(
                               color: Colors.black,
                               letterSpacing: 0.4,
                               fontFamily: "Gotham",

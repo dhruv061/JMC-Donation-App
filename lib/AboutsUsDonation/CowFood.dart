@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -35,9 +36,9 @@ class _CowAboutUsState extends State<CowAboutUs> {
           ),
         ),
 
-        title: const Center(
+        title: Center(
           child: Text(
-            'Info          ',
+            'Food_info'.tr,
             style: TextStyle(color: Colors.black, fontFamily: 'Gotham'),
           ),
         ),
@@ -51,9 +52,9 @@ class _CowAboutUsState extends State<CowAboutUs> {
             //heading part
             Container(
               margin: const EdgeInsets.only(top: 20),
-              child: const Text(
-                "Fodders for cow",
-                style: TextStyle(
+              child: Text(
+                "Fodders_for_cow".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
@@ -168,10 +169,10 @@ class _CowAboutUsState extends State<CowAboutUs> {
                   //box 1 information
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "Soak grain in a bucket of water overnight. Cover the grains by about two inches of water. ...\n\nDrain grains and transfer to trays. Spread evenly.\n\nWater each tray morning and night. ...\n\nYou'll see roots within the first couple of days, followed by greens.",
+                  child: Text(
+                    "Food_info1".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -205,9 +206,9 @@ class _CowAboutUsState extends State<CowAboutUs> {
                             borderRadius: BorderRadius.circular(15)))),
 
                     //for button text
-                    child: const Text(
-                      "Contribute",
-                      style: TextStyle(
+                    child: Text(
+                      "Contribute".tr,
+                      style: const TextStyle(
                           color: Colors.black,
                           letterSpacing: 0.4,
                           fontFamily: "Gotham",

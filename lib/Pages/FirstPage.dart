@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/ChatBod.dart';
@@ -74,22 +75,22 @@ class _FirstPageState extends State<FirstPage> {
                 tabBackgroundColor: HexColor("#D3FADE"),
                 padding: const EdgeInsets.all(14),
                 gap: 8,
-                tabs: const [
+                tabs: [
                   GButton(
                     icon: Icons.home_filled,
-                    text: 'Home',
+                    text: 'Home_nav'.tr,
                   ),
                   GButton(
                     icon: Icons.energy_savings_leaf_sharp,
-                    text: 'Donation',
+                    text: 'Donation_nav'.tr,
                   ),
                   GButton(
                     icon: Icons.chat,
-                    text: 'Conversation',
+                    text: 'Conversation_nav'.tr,
                   ),
                   GButton(
                     icon: Icons.person_outline_rounded,
-                    text: 'Profile',
+                    text: 'Profile_nav'.tr,
                   ),
                 ],
 

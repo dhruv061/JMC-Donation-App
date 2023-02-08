@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -35,9 +36,9 @@ class _FoodForNeadyAboutUsState extends State<FoodForNeadyAboutUs> {
           ),
         ),
 
-        title: const Center(
+        title: Center(
           child: Text(
-            'Info          ',
+            'Needy_info'.tr,
             style: TextStyle(color: Colors.black, fontFamily: 'Gotham'),
           ),
         ),
@@ -51,9 +52,9 @@ class _FoodForNeadyAboutUsState extends State<FoodForNeadyAboutUs> {
             //Heading
             Container(
               margin: const EdgeInsets.only(top: 20),
-              child: const Text(
-                "Food For Underprivileged",
-                style: TextStyle(
+              child: Text(
+                "Food_For_Underprivileged".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
@@ -168,10 +169,10 @@ class _FoodForNeadyAboutUsState extends State<FoodForNeadyAboutUs> {
                   //box 1 information
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "There are several villages in gujarat, Where people are in below povert line facing a great challange for single say meal.",
+                  child: Text(
+                    "Needy_info1".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -184,10 +185,10 @@ class _FoodForNeadyAboutUsState extends State<FoodForNeadyAboutUs> {
                 Container(
                   margin: const EdgeInsets.only(top: 0),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "Provide clean water and daily nutritious, hot meals in the local cuisine for children & infirm adults\n\nInclude hygiene education to help stem the spread of disease\n\nHire local villagers to help run the facility\n\nGrow and/or purchase food locally to support the economy\n\nProvide education in more productive agricultural methods\n\nConsult community leaders in design of program\n\nAdjust the program to changing needs",
+                  child: Text(
+                    "Needy_info2".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -195,9 +196,7 @@ class _FoodForNeadyAboutUsState extends State<FoodForNeadyAboutUs> {
                   ),
                 ),
 
-                const SizedBox(
-                  height: 8
-                ),
+                const SizedBox(height: 8),
 
                 Divider(
                   height: 32,
@@ -221,9 +220,9 @@ class _FoodForNeadyAboutUsState extends State<FoodForNeadyAboutUs> {
                             borderRadius: BorderRadius.circular(15)))),
 
                     //for button text
-                    child: const Text(
-                      "Contribute",
-                      style: TextStyle(
+                    child: Text(
+                      "Contribute".tr,
+                      style: const TextStyle(
                           color: Colors.black,
                           letterSpacing: 0.4,
                           fontFamily: "Gotham",

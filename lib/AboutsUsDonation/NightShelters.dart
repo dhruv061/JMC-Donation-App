@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -35,9 +36,9 @@ class _NightAboutUsState extends State<NightAboutUs> {
           ),
         ),
 
-        title: const Center(
+        title: Center(
           child: Text(
-            'Info          ',
+            'Shelter_info'.tr,
             style: TextStyle(color: Colors.black, fontFamily: 'Gotham'),
           ),
         ),
@@ -51,9 +52,9 @@ class _NightAboutUsState extends State<NightAboutUs> {
             //Heading
             Container(
               margin: const EdgeInsets.only(top: 20),
-              child: const Text(
-                "Help For Night Shelters",
-                style: TextStyle(
+              child: Text(
+                "nightShelters".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
@@ -169,10 +170,10 @@ class _NightAboutUsState extends State<NightAboutUs> {
                   //box 1 information
                   margin: const EdgeInsets.only(top: 10),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "Homelessness is really hard to overcome without help from someone else. Even with a job, some people struggle to find a shelter to regain their sense of peace. Their are so many causes of homelessness that are common in many people's lives. Being unemployed for an extended period of time is one of the most dominant causes for homelessness. As we all experienced during the covid pandemic three missed paychecks can lead to anyone with good job to be subject to losing their home.",
+                  child: Text(
+                    "Shelter_info1".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -185,10 +186,10 @@ class _NightAboutUsState extends State<NightAboutUs> {
                 Container(
                   margin: const EdgeInsets.only(top: 0),
                   padding: const EdgeInsets.only(left: 21, right: 21),
-                  child: const Text(
-                    "We also learned from the recent pandemic that we do not have to be the cause of us losing our jobs. Your job can close down without advanced notice and now you have to find work. Seasoned in your craft you have to start over accepting lower pay or being passed over as being over qualified. With that being said, we must admit that as we age find a job becomes more and more difficult. Anyone who has looked for a job has spent months looking for a job with no success. Throughout this time we are expected to still maintain proper hygiene even if we do not have access to clean water.",
+                  child: Text(
+                    "Shelter_info2".tr,
                     textAlign: TextAlign.justify,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Gotham",
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -222,9 +223,9 @@ class _NightAboutUsState extends State<NightAboutUs> {
                             borderRadius: BorderRadius.circular(15)))),
 
                     //for button text
-                    child: const Text(
-                      "Contribute",
-                      style: TextStyle(
+                    child: Text(
+                      "Contribute".tr,
+                      style: const TextStyle(
                           color: Colors.black,
                           letterSpacing: 0.4,
                           fontFamily: "Gotham",

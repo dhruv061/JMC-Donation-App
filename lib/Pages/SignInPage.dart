@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/FirstPage.dart';
 import 'package:jmc/module/ForgetPassword.dart';
@@ -141,8 +142,8 @@ class _SignInPageState extends State<SignInPage> {
                       width: 400,
                       // color: Colors.yellow,
                       alignment: const FractionalOffset(0.1, 0.6),
-                      child: const Text(
-                        "Sign-in",
+                      child: Text(
+                        "Sign-in".tr,
                         style: TextStyle(
                             fontFamily: 'Gotham',
                             fontWeight: FontWeight.bold,
@@ -160,10 +161,10 @@ class _SignInPageState extends State<SignInPage> {
                       // color: Colors.yellow,
                       height: 50,
                       width: 310,
-                      child: const Text(
-                        "Enter Your Email and Password and Start Donating",
+                      child: Text(
+                        "Sign-in_detail".tr,
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontFamily: 'Gotham',
                             // fontWeight: FontWeight.normal,
                             fontSize: 18),
@@ -197,7 +198,7 @@ class _SignInPageState extends State<SignInPage> {
                               Icons.email,
                               color: HexColor("#002C00"),
                             ),
-                            hintText: "e-mail",
+                            hintText: "e-mail".tr,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(33)),
                             focusedBorder: OutlineInputBorder(
@@ -230,7 +231,7 @@ class _SignInPageState extends State<SignInPage> {
                               Icons.password,
                               color: HexColor("#002C00"),
                             ),
-                            hintText: "password",
+                            hintText: "password".tr,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(33)),
                             focusedBorder: OutlineInputBorder(
@@ -270,10 +271,10 @@ class _SignInPageState extends State<SignInPage> {
                                       builder: (context) =>
                                           ForgetPassword_Page()));
                             },
-                            child: const Text(
-                              "Forgot Password",
+                            child: Text(
+                              "Forgot_Password".tr,
                               textAlign: TextAlign.right,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontFamily: 'Gotham',
                                   color: Color(0xff1778F2),
                                   fontSize: 14.5),
@@ -286,7 +287,7 @@ class _SignInPageState extends State<SignInPage> {
                         //for sign-in Button
                         SizedBox(
                           height: 50,
-                          width: 170,
+                          width: 190,
                           child: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: HexColor("#22E183"),
@@ -327,8 +328,8 @@ class _SignInPageState extends State<SignInPage> {
                                       ),
                                     ],
                                   )
-                                : const Text(
-                                    'Sign-in',
+                                : Text(
+                                    'Sign-in'.tr,
                                     style: const TextStyle(
                                         fontFamily: 'Gotham', fontSize: 22),
                                   ),
@@ -383,12 +384,12 @@ class _SignInPageState extends State<SignInPage> {
                                 fontFamily: 'Gotham',
                                 fontWeight: FontWeight.w400,
                                 fontSize: 15),
-                            text: 'No Account?   ',
+                            text: 'No_Account?'.tr,
                             children: [
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = widget.onClickedSignUp,
-                                text: 'Sign Up',
+                                text: 'Sign_Up'.tr,
                                 style: const TextStyle(
                                   color: Color(0xff1778F2),
                                   decoration: TextDecoration.underline,

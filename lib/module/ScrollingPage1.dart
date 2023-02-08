@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/Pages/FirstPage.dart';
 import 'package:jmc/Pages/HomePage.dart';
@@ -25,8 +26,8 @@ class Scrolling_Page_1 extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 100, left: 283),
             padding: const EdgeInsets.only(top: 56),
             child: TextButton(
-              onPressed: () async{
-                   //only show only one time
+              onPressed: () async {
+                //only show only one time
                 final prefs = await SharedPreferences.getInstance();
                 prefs.setBool('showHome', true);
 
@@ -44,7 +45,7 @@ class Scrolling_Page_1 extends StatelessWidget {
               //for button text
               // ignore: prefer_const_constructors
               child: Text(
-                "Skip",
+                "Skip_1".tr,
                 style: const TextStyle(
                     color: Colors.white,
                     letterSpacing: 0.4,
@@ -59,8 +60,8 @@ class Scrolling_Page_1 extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 100, left: 30, top: 120),
             padding: const EdgeInsets.only(top: 490),
-            child: const Text("Welcome",
-                style: TextStyle(
+            child: Text("Welcome_1".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -73,9 +74,8 @@ class Scrolling_Page_1 extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 100, left: 32, top: 110),
             padding: const EdgeInsets.only(top: 540),
             //child: const Text("Welcome",style: TextStyle(fontFamily: "Gotham",fontSize: 32,fontWeight: FontWeight.bold,color: Colors.white,)),
-            child: const Text(
-                "If you want to break the cycle of poverty, educate a children.",
-                style: TextStyle(
+            child: Text("Quote_1".tr,
+                style: const TextStyle(
                     fontFamily: "Gotham",
                     height: 1.3,
                     fontSize: 16,
