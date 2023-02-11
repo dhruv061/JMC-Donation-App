@@ -8,6 +8,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:jmc/BackEnd/Auth.dart';
 import 'package:jmc/Language/language_screen2.dart';
 import 'package:jmc/Pages/FirstPage.dart';
+import 'package:jmc/Pages/JmcAboutUs.dart';
 import 'package:jmc/module/MyRewarda.dart';
 import 'package:jmc/Utils/NextScreen.dart';
 import 'package:share_plus/share_plus.dart';
@@ -67,6 +68,16 @@ class _Tab1_HomeTabState extends State<Tab1_HomeTab> {
                     );
                   },
                   padding: 105),
+
+              //About Us
+              ResuableContainer(
+                  icone: Icons.info,
+                  title: "About us",
+                  function: () {
+                    nextScreen(context, JmcAboutUs());
+                    
+                },
+                  padding: 120),
 
               //Logout
               ResuableContainer(

@@ -43,19 +43,22 @@ class _ChatbodState extends State<Chatbod> {
             Container(
               child: Column(
                 children: [
+                  
                   // sub container for main heading
                   Container(
-                    margin: EdgeInsets.only(top: 23, left: 8),
+                    margin: EdgeInsets.only(top: 23, left: 35),
                     height: 25,
                     width: 361,
                     color: HexColor("#22E183"),
-                    child: const Text(
-                      "What can we do for you? ",
-                      style: TextStyle(
-                          fontFamily: "Gotham",
-                          color: Colors.black,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
+                    child: Center(
+                      child: Text(
+                        "What can we do for you? ",
+                        style: TextStyle(
+                            fontFamily: "Gotham",
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
 

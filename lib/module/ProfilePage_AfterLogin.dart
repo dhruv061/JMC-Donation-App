@@ -16,6 +16,7 @@ import 'package:jmc/module/MyRewarda.dart';
 
 import 'package:jmc/module/SetImage.dart';
 import 'package:jmc/Classes/UserData.dart';
+import 'package:jmc/module/sendMail.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -414,6 +415,48 @@ class _ProfilePage_AfterLoginState extends State<ProfilePage_AfterLogin> {
                                     openSnackbar(
                                         context, e.toString(), Colors.red);
                                   }
+                                },
+                              ),
+                            ),
+
+                            const SizedBox(
+                              height: 18,
+                            ),
+
+                            //send e-mail buton
+                            SizedBox(
+                              height: 50,
+                              width: 190,
+                              child: ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: HexColor("#22E183"),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                ),
+
+                                //for loading indicator and Text
+                                icon: const Icon(Icons.email, size: 24),
+
+                                label: const Text(
+                                  'SendEmail',
+                                  style: const TextStyle(
+                                      fontFamily: 'Gotham', fontSize: 22),
+                                ),
+
+                                onPressed: () async {
+                                  nextScreen(context, sendEmail());
+                                  // final Email send_email = Email(
+                                  //   body: 'body of email',
+                                  //   subject: 'Test Flutter',
+                                  //   recipients: ['mavanidhruv32@gmail.com'],
+                                  //   // cc: ['example_cc@ex.com'],
+                                  //   // bcc: ['example_bcc@ex.com'],
+                                  //   // attachmentPaths: ['/path/to/email_attachment.zip'],
+                                  //   isHTML: false,
+                                  // );
+
+                                  // await FlutterEmailSender.send(send_email);
                                 },
                               ),
                             ),

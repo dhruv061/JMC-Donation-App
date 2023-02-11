@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jmc/Language/language_screen.dart';
 import 'package:jmc/module/ScrollingPage1.dart';
 import 'package:jmc/module/ScrollingPage2.dart';
 import 'package:jmc/module/ScrollingPage3.dart';
@@ -23,6 +24,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           PageView(
             controller: _controller,
             children: [
+              LanguageScreen(),
               Scrolling_Page_1(),
               Scrolling_Page_2(),
               Scrolling_Page_3(),
@@ -33,7 +35,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             alignment: Alignment(0, -0.80),
             child: SmoothPageIndicator(
               controller: _controller,
-              count: 3,
+              count: 4,
               axisDirection: Axis.horizontal,
               effect: const SlideEffect(
                   spacing: 4.0,

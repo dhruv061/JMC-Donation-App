@@ -48,14 +48,17 @@ class _OptionChatBotState extends State<OptionChatBot> {
                 ),
 
                 //for Text
-                Text(
-                  "What?".tr,
-                  style: TextStyle(
-                      color: HexColor("#002C00"),
-                      fontFamily: "Gotham",
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      wordSpacing: 2),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25),
+                  child: Text(
+                    "What?".tr,
+                    style: TextStyle(
+                        color: HexColor("#002C00"),
+                        fontFamily: "Gotham",
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        wordSpacing: 2),
+                  ),
                 ),
 
                 //for button
