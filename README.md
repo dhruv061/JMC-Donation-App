@@ -1,8 +1,6 @@
+![Logo (2)](https://user-images.githubusercontent.com/96719397/231743997-65a100d9-42e9-4a43-ab09-bf4d5501c93f.png)
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
-
-# Jamnager Municipal corporation (JMC) Donation App
+# Jamnager  Municipal corporation (JMC) Donation App
 
 JMC app is made for Jamnager Municipal corporation which accepts donation amounts from the citizens. Jmanger citizens give their donations to direct JMC without any third party using this JMC app and get an e-certificate that is generated automatically. This app is making under SSIP Hekathone 2022(Azadi ka Amrit  mahotsav Hekathone).
 
@@ -47,8 +45,14 @@ This project is used by the Jmnager Munciple Corporations.
 
 - [@dhruv061](https://github.com/dhruv061)
 
-
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/filed1sD8OYFBL6Xtx8grlCrOj_tbuiCe7Csvq/view?usp=share_link)
+![Final ProtoType-1-min](https://user-images.githubusercontent.com/96719397/231743518-bca42e80-8a94-4c75-9111-a2229a9fb721.png)
+
+![Final ProtoType-2-min](https://user-images.githubusercontent.com/96719397/231743562-3bbfcf80-4c5e-4fd7-8610-95f6d1c77e36.png)
+
+
+
+
+
 
